@@ -40,9 +40,10 @@ Doesn't consider inflation for the period'''
     jj = (interest/100) + 1
     '''The starting capital acts as an independent deposit, with jj as interest rate multiplying it for t time'''
     SC = startcapital * jj**time
-    '''The monthly deposit, on the other hand, behave as a Geometric Progression, beginning with a1 = monthly_deposit and ratio = jj. So, if monthly_deposit=100,
-Then, a1=100, a2=100+100*jj, a3=100+100*jj+100*jj**2 and so on. The formula to calculate the sum of a geometric progression is Sn = a1*(q**n - 1)/q-1.
-In this case, n = time-1, q = jj, a1 = monthly_deposit'''
+    '''The monthly deposit, on the other hand, is multiplied by a Geometric Progression that forms the interest over time. That interest begins with a1 = jj, a2 = jj², a3 = jj³ and so on.
+    Then, if monthly deposit = 100, we'll have 100 at month 1, 100+100*jj at month 2, 100+100*jj+100*jj² at month 3 and so forth. That can be simplified with 100*(1*jj^0 + 1*jj + 1*jj² + 1*jj³+...),
+    making the Geometric Progression quite clear and showing us that we need the summation of that progression.
+    The formula to calculate the sum of a geometric progression is Sn = a1*(q**n - 1)/q-1. In this case, n = time-1, q = jj, a1 = monthly_deposit'''
     Sn = monthly_deposit * (jj**(time-1) - 1)/(jj-1)
     final = SC+Sn
     return final
