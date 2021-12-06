@@ -48,3 +48,14 @@ Doesn't consider inflation for the period'''
     final = SC+Sn
     return final
 
+
+def real_gain(income_rate, inflation_rate):
+    '''Extract the real gain from an investment, that is, how much that investment provided considering the inflation during that period.
+    income_rate and inflation must be floats.'''
+    income_rate = income_rate*100
+    inflation_rate = inflation_rate*100
+    
+    real_gain = (100+income_rate)/(100+inflation_rate)
+    
+    return real_gain
+
